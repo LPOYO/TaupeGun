@@ -4,6 +4,7 @@ import fr.lpoyo.taupegun.core.player.PlayerManager;
 import fr.lpoyo.taupegun.events.TaupeEvent;
 import fr.lpoyo.taupegun.game.Game;
 import fr.lpoyo.taupegun.game.GameManager;
+import fr.lpoyo.taupegun.game.ScoreboardManager;
 import fr.lpoyo.taupegun.utils.ConfigUtils;
 import fr.lpoyo.taupegun.utils.WorldBorderUtils;
 import fr.lpoyo.taupegun.utils.WorldUtils;
@@ -24,6 +25,7 @@ public class TaupeGun extends JavaPlugin {
     private boolean worldRegen = true;
     private Game game;
     private PlayerManager playerManager;
+    private ScoreboardManager scoreboardManager;
     private ConfigUtils configUtils;
     private WorldUtils worldUtils;
     private WorldBorderUtils worldBorderUtils;
@@ -44,6 +46,7 @@ public class TaupeGun extends JavaPlugin {
         configUtils = new ConfigUtils(this);
         game = new GameManager(this);
         playerManager = new PlayerManager(this);
+        scoreboardManager = new ScoreboardManager(this);
 
         log(game.getPrefix() + "Taupe Gun active !");
 

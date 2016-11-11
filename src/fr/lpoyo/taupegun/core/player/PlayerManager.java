@@ -1,6 +1,7 @@
 package fr.lpoyo.taupegun.core.player;
 
 import fr.lpoyo.taupegun.core.TaupeGun;
+import lombok.Getter;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 public class PlayerManager {
 
     private TaupeGun pl;
+    @Getter
     private List<TaupePlayer> players;
 
     public PlayerManager(TaupeGun pl) {

@@ -1,7 +1,9 @@
 package fr.lpoyo.taupegun.tasks;
 
 import fr.lpoyo.taupegun.core.TaupeGun;
+import fr.lpoyo.taupegun.core.player.PlayerManager;
 import fr.lpoyo.taupegun.game.Game;
+import fr.lpoyo.taupegun.game.ScoreboardManager;
 import org.bukkit.scheduler.BukkitRunnable;
 
 /**
@@ -27,5 +29,13 @@ public abstract class TaupeRunnable extends BukkitRunnable {
 
     public Game getGame() {
         return pl.getGame();
+    }
+
+    public ScoreboardManager getScoreboardManager() {
+        return pl.getScoreboardManager();
+    }
+
+    public PlayerManager getPlayerManager() {
+        return pl.getPlayerManager();
     }
 }

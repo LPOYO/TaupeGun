@@ -3,6 +3,7 @@ package fr.lpoyo.taupegun.events;
 import fr.lpoyo.taupegun.core.TaupeGun;
 import fr.lpoyo.taupegun.core.player.PlayerManager;
 import fr.lpoyo.taupegun.game.Game;
+import fr.lpoyo.taupegun.game.ScoreboardManager;
 import fr.lpoyo.taupegun.utils.ConfigUtils;
 import lombok.AllArgsConstructor;
 import org.bukkit.Bukkit;
@@ -35,4 +36,7 @@ public class TaupeEvent implements Listener {
         return pl.getGame();
     }
 
+    public ScoreboardManager getScoreboardManager() {
+        return pl.getScoreboardManager();
+    }
 }

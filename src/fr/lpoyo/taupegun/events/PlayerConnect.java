@@ -34,7 +34,7 @@ public class PlayerConnect extends TaupeEvent {
             getPlayerManager().addPlayer(p);
             event.setJoinMessage(getGame().getPrefix() + p.getName() + " a rejoint la partie ! §e(§6" + Bukkit.getOnlinePlayers().size() + "§e/§6" + getGame().getMaxPlayers() + "§e)");
             if (!Task.LOBBYTASK.isRunning())
-                new LobbyTask(pl).runTaskTimer(pl, 0, 0);
+                new LobbyTask(pl).runTaskTimer(pl, 0, 20);
         }
     }
 
