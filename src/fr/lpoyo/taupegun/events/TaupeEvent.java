@@ -5,6 +5,7 @@ import fr.lpoyo.taupegun.core.player.PlayerManager;
 import fr.lpoyo.taupegun.game.Game;
 import fr.lpoyo.taupegun.game.ScoreboardManager;
 import fr.lpoyo.taupegun.utils.ConfigUtils;
+import fr.lpoyo.taupegun.utils.gui.InventoryGUI;
 import lombok.AllArgsConstructor;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -19,7 +20,11 @@ public class TaupeEvent implements Listener {
     public static void registerEvents(TaupeGun pl) {
         PluginManager pm = Bukkit.getPluginManager();
 
+        pm.registerEvents(new InventoryGUI.InventoryListener(), pl);
+
         pm.registerEvents(new PlayerConnect(pl), pl);
+        pm.registerEvents(new LobbyListener(pl), pl);
+        pm.registerEvents(new GameListener(pl), pl);
     }
 
     public TaupeGun pl;
@@ -30,6 +35,7 @@ public class TaupeEvent implements Listener {
 
     public ConfigUtils getConfigUtils() {
         return pl.getConfigUtils();
+
     }
 
     public Game getGame() {

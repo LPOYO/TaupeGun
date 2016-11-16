@@ -1,6 +1,4 @@
 prefix: "&e&l[&5&lTaupeGun&e&l]&6:"
 monde:
   taille: 1500
-joueurs:
-  maximum: 20
-  minimum: 4
+mode: 0

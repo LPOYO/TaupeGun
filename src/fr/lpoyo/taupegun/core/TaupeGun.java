@@ -5,29 +5,35 @@ import fr.lpoyo.taupegun.events.TaupeEvent;
 import fr.lpoyo.taupegun.game.Game;
 import fr.lpoyo.taupegun.game.GameManager;
 import fr.lpoyo.taupegun.game.ScoreboardManager;
+import fr.lpoyo.taupegun.game.teams.TeamsManager;
 import fr.lpoyo.taupegun.utils.ConfigUtils;
-import fr.lpoyo.taupegun.utils.WorldBorderUtils;
-import fr.lpoyo.taupegun.utils.WorldUtils;
+import fr.lpoyo.taupegun.utils.world.WorldBorderUtils;
+import fr.lpoyo.taupegun.utils.world.WorldUtils;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-/**
- * Created by ROMAIN on 11/11/2016.
- */
-@Getter
+
 public class TaupeGun extends JavaPlugin {
 
     public static boolean debug = true;
-
-    private TaupeGun instance;
-    private boolean worldRegen = true;
+    @Getter
+    private static TaupeGun instance;
+    private boolean worldRegen = false;
+    @Getter
     private Game game;
+    @Getter
     private PlayerManager playerManager;
+    @Getter
     private ScoreboardManager scoreboardManager;
+    @Getter
+    private TeamsManager teamsManager;
+    @Getter
     private ConfigUtils configUtils;
+    @Getter
     private WorldUtils worldUtils;
+    @Getter
     private WorldBorderUtils worldBorderUtils;
 
     public static void log(String s) {
@@ -44,9 +50,10 @@ public class TaupeGun extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
         configUtils = new ConfigUtils(this);
+        scoreboardManager = new ScoreboardManager(this);
+        teamsManager = new TeamsManager(this);
         game = new GameManager(this);
         playerManager = new PlayerManager(this);
-        scoreboardManager = new ScoreboardManager(this);
 
         log(game.getPrefix() + "Taupe Gun active !");
 

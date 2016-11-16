@@ -1,7 +1,6 @@
 package fr.lpoyo.taupegun.tasks;
 
 import fr.lpoyo.taupegun.core.TaupeGun;
-import fr.lpoyo.taupegun.game.Game;
 import fr.lpoyo.taupegun.game.ScoreboardManager;
 
 /**

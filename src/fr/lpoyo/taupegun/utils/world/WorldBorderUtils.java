@@ -1,12 +1,15 @@
-package fr.lpoyo.taupegun.utils;
+package fr.lpoyo.taupegun.utils.world;
 
 import fr.lpoyo.taupegun.core.TaupeGun;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.WorldBorder;
 
 public class WorldBorderUtils {
 
     private TaupeGun pl;
+    @Getter
+    private int size;
 
     public WorldBorderUtils(TaupeGun pl) {
         this.pl = pl;
@@ -14,6 +17,7 @@ public class WorldBorderUtils {
     }
 
     public void set(int size, long time) {
+        this.size = size;
         WorldBorder wb;
         wb = Bukkit.getWorlds().get(0).getWorldBorder();
         wb.setCenter(0, 0);

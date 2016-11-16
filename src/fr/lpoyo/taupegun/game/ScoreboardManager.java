@@ -2,7 +2,6 @@ package fr.lpoyo.taupegun.game;
 
 import fr.lpoyo.taupegun.core.TaupeGun;
 import fr.lpoyo.taupegun.core.player.TaupePlayer;
-import fr.lpoyo.taupegun.utils.ScoreboardSign;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;
@@ -18,6 +17,17 @@ public class ScoreboardManager {
 
     public ScoreboardManager(TaupeGun pl) {
         this.pl = pl;
+
+        if (Bukkit.getScoreboardManager().getMainScoreboard().getObjective("vie") != null)
+            Bukkit.getScoreboardManager().getMainScoreboard().getObjective("vie").unregister();
+
+        Bukkit.getScheduler().runTaskLater(pl, new Runnable() {
+            @Override
+            public void run() {
+                /*Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard objectives add vie health");
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard objectives setdisplay list vie"); */
+            }
+        }, 20);
     }
 
     public void updateLobby(TaupePlayer player) {
@@ -26,20 +36,25 @@ public class ScoreboardManager {
         if (player.getScoreboard() != null) {
             sb = player.getScoreboard();
             o = sb.getObjective("taupe");
-        }
-
-        else {
+        } else {
             sb = Bukkit.getScoreboardManager().getNewScoreboard();
             o = sb.registerNewObjective("taupe", "dummy");
             o.setDisplaySlot(DisplaySlot.SIDEBAR);
             o.setDisplayName("Taupe Gun");
 
-            o.getScore("§r ").setScore(-1);
+            Objective health = sb.registerNewObjective("vie", "health");
+            health.setDisplayName("vie");
+            health.setDisplaySlot(DisplaySlot.PLAYER_LIST);
+
             player.setScoreboard(sb);
         }
 
+        sb.getEntries().stream().filter(s -> Bukkit.getPlayer(s) == null).forEach(sb::resetScores);
+
+        o.getScore("§r ").setScore(-1);
         o.getScore("§7Joueurs : §r" + pl.getPlayerManager().getPlayers().size()).setScore(-2);
-        o.getScore("§7Equipes : §r0").setScore(-3);
+        o.getScore("§7Equipes : §r" + pl.getGame().getMode().getTeams()).setScore(-3);
+
 
         player.setScoreboard(sb);
         player.getPlayer().setScoreboard(player.getScoreboard());
@@ -79,4 +94,7 @@ public class ScoreboardManager {
         sbs.replace(player.getUniqueId(), sb);
     }*/
 
+    public Scoreboard getBoard() {
+        return Bukkit.getScoreboardManager().getMainScoreboard();
+    }
 }
