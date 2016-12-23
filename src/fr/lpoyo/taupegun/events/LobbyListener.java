@@ -27,11 +27,9 @@ public class LobbyListener extends TaupeEvent {
 
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
-        /*
         if (GameState.isState(GameState.LOBBY)) {
             event.setCancelled(true);
         }
-        */
     }
 
     @EventHandler

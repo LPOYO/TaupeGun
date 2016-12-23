@@ -17,6 +17,8 @@ public class LobbyTask extends TaupeRunnable {
 
     @Override
     public void run() {
+        if (!Task.LOBBYTASK.isRunning())
+            cancelTask();
         ScoreboardManager scoreboardManager = getScoreboardManager();
         getPlayerManager().getPlayers().forEach(scoreboardManager::updateLobby);
 

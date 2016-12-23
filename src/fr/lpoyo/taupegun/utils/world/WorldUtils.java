@@ -1,7 +1,7 @@
 package fr.lpoyo.taupegun.utils.world;
 
 import fr.lpoyo.taupegun.core.TaupeGun;
-import net.minecraft.server.v1_10_R1.BiomeBase;
+import net.minecraft.server.v1_11_R1.BiomeBase;
 
 import java.io.File;
 
@@ -40,7 +40,7 @@ public class WorldUtils {
     /*private void replaceBiomes() {
         System.out.println("==================================================================");
         for (int i = 0; i < BiomeBase.i.size(); i++) {
-            if (BiomeBase.i.toArray()[i].getClass().getName().equalsIgnoreCase("net.minecraft.server.v1_10_R1.BiomeOcean")) {
+            if (BiomeBase.i.toArray()[i].getClass().getName().equalsIgnoreCase("net.minecraft.server.v1_11_R1.BiomeOcean")) {
                 BiomeBase.i.remove(i);
                 TaupeGun.log("§eAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             }

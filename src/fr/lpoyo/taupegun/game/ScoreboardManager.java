@@ -60,39 +60,46 @@ public class ScoreboardManager {
         player.getPlayer().setScoreboard(player.getScoreboard());
     }
 
-    /*public void updateGame(Player player) {
-        ScoreboardSign sb;
-        if (sbs.containsKey(player.getUniqueId()))
-            sb = sbs.get(player.getUniqueId());
-        else {
-            sb = new ScoreboardSign(player, "§6§lMINERS WAR");
-            sb.create();
-            sb.setLine(0, "§r");
-            sb.setLine(5, "§r ");
-            sb.setLine(7, "§r  ");
-            sbs.put(player.getUniqueId(), sb);
+    public void updateGame(Player player, int minutes, int seconds, int episode) {
+        Scoreboard sb = player.getScoreboard();
+        Objective o = sb.getObjective("taupe");
+        if (o == null) {
+            sb = Bukkit.getScoreboardManager().getNewScoreboard();
+            o = sb.registerNewObjective("taupe", "dummy");
+            o.setDisplaySlot(DisplaySlot.SIDEBAR);
+            o.setDisplayName("Taupe Gun");
+
+            Objective health = sb.registerNewObjective("vie", "health");
+            health.setDisplayName("vie");
+            health.setDisplaySlot(DisplaySlot.PLAYER_LIST);
+
+            player.setScoreboard(sb);
         }
 
-        if (red.isEnabled())
-            sb.setLine(1, "§cRouge : §6" + red.getBanners() + "/8");
-        if (blue.isEnabled())
-            sb.setLine(2, "§bBleue : §6" + blue.getBanners() + "/8");
-        if (green.isEnabled())
-            sb.setLine(3, "§2Verte : §6" + green.getBanners() + "/8");
-        if (yellow.isEnabled())
-            sb.setLine(4, "§6Jaune : §6" + yellow.getBanners() + "/8");
+        sb.getEntries().stream().filter(s -> Bukkit.getPlayer(s) == null).forEach(sb::resetScores);
 
-        double kills = Statistic.KILL.get(player.getUniqueId());
-        double deaths = Statistic.DEATH.get(player.getUniqueId());
-        double ratio = kills / deaths;
+        o.getScore("§r ").setScore(-1);
+        o.getScore("§7Episode : §r" + episode).setScore(-2);
+        o.getScore(pl.getPlayerManager().getPlayers().size() + " §7joueurs").setScore(-3);
+        o.getScore(pl.getGame().getMode().getTeams() + " §7equipes").setScore(-4);
+        o.getScore("§r  ").setScore(-5);
 
-        sb.setLine(6, "§bK/D/R: §a" + (int) kills + "/§c" + (int) deaths + "/§e" + (deaths == 0 ? kills : ratio));
+        if (minutes < 10 && seconds < 10)
+            o.getScore("§7Temps : §r0" + minutes
+                    + "§7:§r0" + seconds).setScore(-6);
+        else if (seconds < 10)
+            o.getScore("§7Temps : §r" + minutes
+                    + "§7:§r0" + seconds).setScore(-6);
+        else if (minutes < 10)
+            o.getScore("§7Temps : §r0" + minutes
+                    + "§7:§r" + seconds).setScore(-6);
+        else
+            o.getScore("§7Temps : §r" + minutes
+                    + "§7:§r" + seconds).setScore(-6);
 
-        if (pl.getGameManager().getMinePlayer(player.getUniqueId()) != null)
-            sb.setLine(8, "§aGolds : §6" + pl.getGameManager().getMinePlayer(player.getUniqueId()).getGolds());
-
-        sbs.replace(player.getUniqueId(), sb);
-    }*/
+        player.setScoreboard(sb);
+        player.getPlayer().setScoreboard(player.getScoreboard());
+    }
 
     public Scoreboard getBoard() {
         return Bukkit.getScoreboardManager().getMainScoreboard();

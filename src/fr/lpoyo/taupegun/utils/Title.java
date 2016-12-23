@@ -1,11 +1,11 @@
 package fr.lpoyo.taupegun.utils;
 
-import net.minecraft.server.v1_10_R1.IChatBaseComponent;
-import net.minecraft.server.v1_10_R1.IChatBaseComponent.ChatSerializer;
-import net.minecraft.server.v1_10_R1.PacketPlayOutChat;
-import net.minecraft.server.v1_10_R1.PacketPlayOutTitle;
-import net.minecraft.server.v1_10_R1.PacketPlayOutTitle.EnumTitleAction;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
+import net.minecraft.server.v1_11_R1.IChatBaseComponent;
+import net.minecraft.server.v1_11_R1.IChatBaseComponent.ChatSerializer;
+import net.minecraft.server.v1_11_R1.PacketPlayOutChat;
+import net.minecraft.server.v1_11_R1.PacketPlayOutTitle;
+import net.minecraft.server.v1_11_R1.PacketPlayOutTitle.EnumTitleAction;
+import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 public class Title {

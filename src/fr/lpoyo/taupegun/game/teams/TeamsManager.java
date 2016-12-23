@@ -1,10 +1,8 @@
 package fr.lpoyo.taupegun.game.teams;
 
 import fr.lpoyo.taupegun.core.TaupeGun;
-import fr.lpoyo.taupegun.core.player.TaupePlayer;
 import fr.lpoyo.taupegun.game.Game;
 import fr.lpoyo.taupegun.utils.item.CustomItem;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.bukkit.*;
 import org.bukkit.entity.Player;

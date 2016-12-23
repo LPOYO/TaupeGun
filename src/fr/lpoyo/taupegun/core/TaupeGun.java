@@ -1,5 +1,8 @@
 package fr.lpoyo.taupegun.core;
 
+import fr.lpoyo.taupegun.commands.TCommand;
+import fr.lpoyo.taupegun.commands.RevealCommand;
+import fr.lpoyo.taupegun.commands.TaupeCommand;
 import fr.lpoyo.taupegun.core.player.PlayerManager;
 import fr.lpoyo.taupegun.events.TaupeEvent;
 import fr.lpoyo.taupegun.game.Game;
@@ -54,6 +57,10 @@ public class TaupeGun extends JavaPlugin {
         teamsManager = new TeamsManager(this);
         game = new GameManager(this);
         playerManager = new PlayerManager(this);
+
+        getCommand("taupe").setExecutor(new TaupeCommand(this));
+        getCommand("reveal").setExecutor(new RevealCommand(this));
+        getCommand("t").setExecutor(new TCommand(this));
 
         log(game.getPrefix() + "Taupe Gun active !");
 

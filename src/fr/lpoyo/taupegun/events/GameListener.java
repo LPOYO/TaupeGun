@@ -1,6 +1,7 @@
 package fr.lpoyo.taupegun.events;
 
 import fr.lpoyo.taupegun.core.TaupeGun;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
 
@@ -14,9 +15,8 @@ public class GameListener extends TaupeEvent {
     }
 
     @EventHandler
-    public void onEntityDamage(EntityDamageEvent event) {/*
+    public void onEntityDamage(EntityDamageEvent event) {
         if (!getGame().isDamage() && event.getEntity() instanceof Player)
             event.setCancelled(true);
-            */
     }
 }

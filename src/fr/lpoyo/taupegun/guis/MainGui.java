@@ -19,7 +19,15 @@ public class MainGui {
         FormattedInventoryGUI gui = new FormattedInventoryGUI(5, "§6Menu");
         Random random = new Random();
 
-        gui.setOption(5, 2, new AbstractGuiOption(Material.BEACON, "§6Commencer", 1, 0, "§7Commencer la partie") {
+        gui.setOption(5, 2, new AbstractGuiOption(Material.DIAMOND_SWORD, "§6Kits", 1, 0, "§7Kits de taupes") {
+            @Override
+            public void onSelection(Player selecter, InventoryAction selectionType) {
+                gui.closeGUI(selecter);
+                new KitsGui(selecter);
+            }
+        });
+
+        gui.setOption(4, 2, new AbstractGuiOption(Material.BEACON, "§6Commencer", 1, 0, "§7Commencer la partie") {
             @Override
             public void onSelection(Player selecter, InventoryAction selectionType) {
                 gui.closeGUI(selecter);

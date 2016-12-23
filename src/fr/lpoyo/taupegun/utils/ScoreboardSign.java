@@ -1,7 +1,7 @@
 package fr.lpoyo.taupegun.utils;
 
-import net.minecraft.server.v1_10_R1.*;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
+import net.minecraft.server.v1_11_R1.*;
+import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
