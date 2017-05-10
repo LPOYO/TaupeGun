@@ -1,5 +1,6 @@
 package fr.lpoyo.taupegun.core;
 
+import fr.lpoyo.taupegun.commands.ClaimCommand;
 import fr.lpoyo.taupegun.commands.TCommand;
 import fr.lpoyo.taupegun.commands.RevealCommand;
 import fr.lpoyo.taupegun.commands.TaupeCommand;
@@ -61,6 +62,7 @@ public class TaupeGun extends JavaPlugin {
         getCommand("taupe").setExecutor(new TaupeCommand(this));
         getCommand("reveal").setExecutor(new RevealCommand(this));
         getCommand("t").setExecutor(new TCommand(this));
+        getCommand("claim").setExecutor(new ClaimCommand(this));
 
         log(game.getPrefix() + "Taupe Gun active !");
 

@@ -33,7 +33,7 @@ public class TaupeCommand implements CommandExecutor {
 
                 else if (args[0].equalsIgnoreCase("test") && sender instanceof Player) {
                     Player p = (Player) sender;
-                    pl.getConfigUtils().getKit(args[1]).stream().filter(itemStack -> itemStack != null).forEach(itemStack -> p.getInventory().addItem(itemStack));
+                    pl.getConfigUtils().getKit(args[1]).getItems().stream().filter(itemStack -> itemStack != null).forEach(itemStack -> p.getInventory().addItem(itemStack));
                 }
             }
         }

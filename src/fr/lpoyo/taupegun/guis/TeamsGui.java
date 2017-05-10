@@ -29,13 +29,13 @@ public class TeamsGui {
                 inventory.clear();
 
                 for (int i = 0; i < 9; i++) {
-                    setOption(i, new AbstractGuiOption(Material.STAINED_GLASS_PANE, "§6Coucou", 1, random.nextInt(15) + 1, "§7Ca va ?") {
+                    setOption(i, new AbstractGuiOption(Material.STAINED_GLASS_PANE, "§6Coucou", 1, random.nextInt(15) + 1, null, false, false, "§7Ca va ?") {
                         @Override
                         public void onSelection(Player selecter, InventoryAction selectionType) {
                         }
                     });
 
-                    setOption(36 + i, new AbstractGuiOption(Material.STAINED_GLASS_PANE, "§6Coucou", 1, random.nextInt(15) + 1, "§7Ca va ?") {
+                    setOption(36 + i, new AbstractGuiOption(Material.STAINED_GLASS_PANE, "§6Coucou", 1, random.nextInt(15) + 1, null, false, false, "§7Ca va ?") {
                         @Override
                         public void onSelection(Player selecter, InventoryAction selectionType) {
                         }
@@ -73,7 +73,7 @@ public class TeamsGui {
 
                     ItemStack is = team.getItemStack();
 
-                    setOption(19 + i, new AbstractGuiOption(is.getType(), is.getItemMeta().getDisplayName(), is.getAmount(), is.getDurability(), lores.toArray(new String[lores.size()])) {
+                    setOption(19 + i, new AbstractGuiOption(is.getType(), is.getItemMeta().getDisplayName(), is.getAmount(), is.getDurability(), null, false, false, lores.toArray(new String[lores.size()])) {
                         @Override
                         public void onSelection(Player player, InventoryAction inventoryAction) {
                             if (team.getTeam().getEntries().size() >= 5) {

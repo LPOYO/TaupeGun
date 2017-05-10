@@ -25,6 +25,7 @@ public class TaupeEvent implements Listener {
         pm.registerEvents(new PlayerConnect(pl), pl);
         pm.registerEvents(new LobbyListener(pl), pl);
         pm.registerEvents(new GameListener(pl), pl);
+        pm.registerEvents(new EditListener(pl), pl);
     }
 
     public TaupeGun pl;

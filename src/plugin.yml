@@ -1,6 +1,6 @@
 name: TaupeGun
 main: fr.lpoyo.taupegun.core.TaupeGun
-version: 1.0.0
+version: 1.1.1
 author: LPOYO
 commands:
   taupe:
@@ -8,4 +8,6 @@ commands:
   reveal:
     description:
   t:
+    description:
+  claim:
     description:

@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by ROMAIN on 11/11/2016.
@@ -25,10 +26,16 @@ public abstract class Game {
     private boolean damage, taupesRevealed;
     @Getter @Setter
     private Map<Player, TaupeTeam> taupes;
+    @Getter @Setter
+    private Map<Player, Kit> taupesKit;
+    @Getter @Setter
+    private List<UUID> disconnecteds;
 
     public abstract void setMode(Mode mode);
     public abstract void start();
     public abstract boolean isTaupe(Player p);
+    public abstract void setTaupeKit(Player player, Kit kit);
+    public abstract Kit getTaupeKit(Player player);
 
     @AllArgsConstructor
     @Getter

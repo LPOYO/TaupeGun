@@ -1,6 +1,7 @@
 package fr.lpoyo.taupegun.utils;
 
 import fr.lpoyo.taupegun.core.TaupeGun;
+import fr.lpoyo.taupegun.game.Kit;
 import fr.lpoyo.taupegun.utils.item.CustomItem;
 import org.apache.commons.io.FileUtils;
 import org.bukkit.Material;
@@ -44,17 +45,19 @@ public class ConfigUtils {
 
         kits = YamlConfiguration.loadConfiguration(kitsFile);
 
-        addKit("Aerien", Arrays.asList(new ItemStack(Material.ENDER_PEARL, 16),
-                new CustomItem(Material.ENCHANTED_BOOK, null, null).addEnchantment(Enchantment.PROTECTION_FALL, 4).create()));
+        addKit(new Kit("Aerien", Arrays.asList(new ItemStack(Material.ENDER_PEARL, 16),
+                new CustomItem(Material.ENCHANTED_BOOK, null, null).addEnchantment(Enchantment.PROTECTION_FALL, 4).create())));
 
-        addKit("Potions", Arrays.asList(new Potion(PotionType.INSTANT_DAMAGE, 1, true).toItemStack(1),
+        addKit(new Kit("Potions", Arrays.asList(new Potion(PotionType.INSTANT_DAMAGE, 1, true).toItemStack(1),
                 new Potion(PotionType.POISON, 1, true).toItemStack(1),
                 new Potion(PotionType.WEAKNESS, 1, true).toItemStack(1),
-                new Potion(PotionType.SLOWNESS, 1, true).toItemStack(1)));
+                new Potion(PotionType.SLOWNESS, 1, true).toItemStack(1))));
 
-        addKit("Creeper", Arrays.asList(new CustomItem(Material.MONSTER_EGG, null, null).setAmount(5).createEgg("Creeper"),
+        addKit(new Kit("Creeper", Arrays.asList(new CustomItem(Material.MONSTER_EGG, null, null).setAmount(5).createEgg("Creeper"),
                 new CustomItem(Material.MONSTER_EGG, null, null).setAmount(5).createEgg("Blaze"),
-                new CustomItem(Material.MONSTER_EGG, null, null).setAmount(5).createEgg("Ghast")));
+                new CustomItem(Material.MONSTER_EGG, null, null).setAmount(5).createEgg("Ghast"))));
+
+        addKit(new Kit("Temp", Arrays.asList(new ItemStack(Material.DIAMOND_SWORD))));
     }
 
     public int getInt(String path) {
@@ -74,14 +77,14 @@ public class ConfigUtils {
         pl.saveConfig();
     }
 
-    public void addKit(String name, List<ItemStack> items) {
+    public void addKit(Kit kit) {
         if (kits.getConfigurationSection("kits.name") != null)
             return;
 
-        ConfigurationSection kit = kits.createSection("kits." + name);
+        ConfigurationSection c = kits.createSection("kits." + kit.getName());
 
-        for (ItemStack item : items) {
-            kit.set(UUID.randomUUID().toString(), item);
+        for (ItemStack item : kit.getItems()) {
+            c.set(UUID.randomUUID().toString(), item);
         }
         /*for (ItemStack is : items) {
             if (is.getType().toString().contains("POTION")) {
@@ -117,8 +120,8 @@ public class ConfigUtils {
         }
     }
 
-    public List<ItemStack> getKit(String name) {
-        if (!kits.contains("kits."+name))
+    public Kit getKit(String name) {
+        if (!kits.contains("kits." + name))
             return null;
 
         List<ItemStack> items = new ArrayList<>();
@@ -164,14 +167,23 @@ public class ConfigUtils {
             }
         }*/
 
-        kit.getValues(false).forEach((s, o) -> items.add((ItemStack)o));
+        kit.getValues(false).forEach((s, o) -> items.add((ItemStack) o));
 
-        return items;
+        return new Kit(name, items);
     }
 
-    public Map<String, List<ItemStack>> getAllKits() {
-        Map<String, List<ItemStack>> m = new HashMap<>();
-        kits.getConfigurationSection("kits").getKeys(false).forEach(s -> m.put(s, getKit(s)));
-        return m;
+    public List<Kit> getAllKits() {
+        List<Kit> l = new ArrayList<>();
+        kits.getConfigurationSection("kits").getKeys(false).forEach(s -> l.add(getKit(s)));
+        return l;
+    }
+
+    public void deleteKit(Kit kit) {
+        kits.set("kits." + kit.getName(), null);
+    }
+
+    public void saveKit(Kit kit) {
+        deleteKit(kit);
+        addKit(kit);
     }
 }

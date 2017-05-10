@@ -1,4 +1,8 @@
 prefix: "&e&l[&5&lTaupeGun&e&l]&6:"
+
 monde:
   taille: 1500
+
 mode: 0
+
+pvp1_8: true

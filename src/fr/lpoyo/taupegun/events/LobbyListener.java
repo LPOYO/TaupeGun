@@ -2,6 +2,7 @@ package fr.lpoyo.taupegun.events;
 
 import fr.lpoyo.taupegun.core.TaupeGun;
 import fr.lpoyo.taupegun.game.GameState;
+import fr.lpoyo.taupegun.guis.KitEditGui;
 import fr.lpoyo.taupegun.guis.MainGui;
 import fr.lpoyo.taupegun.guis.TeamsGui;
 import org.bukkit.Material;
@@ -95,6 +96,9 @@ public class LobbyListener extends TaupeEvent {
                     new TeamsGui((Player) event.getWhoClicked());
                 }
             }
+
+            if (KitEditGui.edits.containsKey(event.getWhoClicked()))
+                event.setCancelled(false);
         }
     }
 }

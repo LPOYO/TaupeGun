@@ -31,6 +31,8 @@ public class GameManager extends Game {
         setMode(Mode.byId(cu.getInt("mode")));
         setPrefix(cu.getString("prefix").replaceAll("&", "§") + " ");
         setTaupes(new HashMap<>());
+        setTaupesKit(new HashMap<>());
+        setDisconnecteds(new ArrayList<>());
     }
 
     @Override
@@ -121,6 +123,16 @@ public class GameManager extends Game {
     @Override
     public boolean isTaupe(Player p) {
         return getTaupes().containsKey(p);
+    }
+
+    @Override
+    public void setTaupeKit(Player player, Kit kit) {
+        getTaupesKit().putIfAbsent(player, kit);
+    }
+
+    @Override
+    public Kit getTaupeKit(Player player) {
+        return getTaupesKit().get(player);
     }
 }
 

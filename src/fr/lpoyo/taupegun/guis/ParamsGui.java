@@ -26,7 +26,7 @@ public class ParamsGui {
         TaupeGun pl = TaupeGun.getInstance();
         Random random = new Random();
 
-        gui.setOption(2, 2, new AbstractGuiOption(Material.PAPER, Game.Mode.CLASSIC.getName(), 1, 0, Game.Mode.CLASSIC.getDesc().toArray(new String[0])) {
+        gui.setOption(2, 2, new AbstractGuiOption(Material.PAPER, Game.Mode.CLASSIC.getName(), 1, 0, null, false, false, Game.Mode.CLASSIC.getDesc().toArray(new String[0])) {
             @Override
             public void onSelection(Player selecter, InventoryAction selectionType) {
                 pl.getGame().setMode(Game.Mode.CLASSIC);
@@ -37,7 +37,7 @@ public class ParamsGui {
         });
 
 
-        gui.setOption(6, 2, new AbstractGuiOption(Material.PAPER, Game.Mode.ADVENCED.getName(), 1, 0, Game.Mode.ADVENCED.getDesc().toArray(new String[0])) {
+        gui.setOption(6, 2, new AbstractGuiOption(Material.PAPER, Game.Mode.ADVENCED.getName(), 1, 0, null, false, false, Game.Mode.ADVENCED.getDesc().toArray(new String[0])) {
             @Override
             public void onSelection(Player selecter, InventoryAction selectionType) {
                 pl.getGame().setMode(Game.Mode.ADVENCED);
@@ -48,27 +48,27 @@ public class ParamsGui {
         });
 
         for (int i = 0; i < 9; i++) {
-            gui.setOption(i, 0, new AbstractGuiOption(Material.STAINED_GLASS_PANE, "§6Coucou", 1, random.nextInt(15) + 1, "§7Ca va ?") {
+            gui.setOption(i, 0, new AbstractGuiOption(Material.STAINED_GLASS_PANE, "§6Coucou", 1, random.nextInt(15) + 1, null, false, false, "§7Ca va ?") {
                 @Override
                 public void onSelection(Player selecter, InventoryAction selectionType) {
                 }
             });
 
             if (i <= 4)
-                gui.setOption(0, i, new AbstractGuiOption(Material.STAINED_GLASS_PANE, "§6Coucou", 1, random.nextInt(15) + 1, "§7Ca va ?") {
+                gui.setOption(0, i, new AbstractGuiOption(Material.STAINED_GLASS_PANE, "§6Coucou", 1, random.nextInt(15) + 1, null, false, false, "§7Ca va ?") {
                     @Override
                     public void onSelection(Player selecter, InventoryAction selectionType) {
                     }
                 });
 
-            gui.setOption(i, 4, new AbstractGuiOption(Material.STAINED_GLASS_PANE, "§6Coucou", 1, random.nextInt(15) + 1, "§7Ca va ?") {
+            gui.setOption(i, 4, new AbstractGuiOption(Material.STAINED_GLASS_PANE, "§6Coucou", 1, random.nextInt(15) + 1, null, false, false, "§7Ca va ?") {
                 @Override
                 public void onSelection(Player selecter, InventoryAction selectionType) {
                 }
             });
 
             if (i <= 4)
-                gui.setOption(8, i, new AbstractGuiOption(Material.STAINED_GLASS_PANE, "§6Coucou", 1, random.nextInt(15) + 1, "§7Ca va ?") {
+                gui.setOption(8, i, new AbstractGuiOption(Material.STAINED_GLASS_PANE, "§6Coucou", 1, random.nextInt(15) + 1, null, false, false, "§7Ca va ?") {
                     @Override
                     public void onSelection(Player selecter, InventoryAction selectionType) {
                     }
